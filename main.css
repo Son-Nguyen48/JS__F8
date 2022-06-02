@@ -25,4 +25,16 @@ h1 {
   font-size: 6.4rem;
   border-radius: 1.2rem;
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+  transition: 0.9s all linear;
+}
+
+h1 p {
+  text-shadow: 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff,
+    1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
+  color: #333;
+}
+
+h1:hover p {
+  transform: scale(1.4);
+  cursor: pointer;
 }
