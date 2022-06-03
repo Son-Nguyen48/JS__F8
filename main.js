@@ -196,3 +196,33 @@ function calculateRating(arr) {
 
 // Expected results
 console.log(calculateRating(watchList)); // Output: 8.675
+
+console.log("-----------------------------------");
+var arr = [
+  ["name", "Sơn Đặng"],
+  ["age", 18]
+];
+function arrToObj(arrs) {
+  return Object.assign(
+    arrs[0].reduce((accumulator, currentValue) => ({
+      [accumulator]: currentValue
+    })),
+    arrs[1].reduce((accumulator, currentValue) => ({
+      [accumulator]: currentValue
+    }))
+  );
+}
+// Expected results
+console.log(arrToObj(arr)); // Output: { name: 'Sơn Đặng', age: 18 }
+console.log("-----------------------------------");
+
+//Để check xem đối tượng arr là mảng hay là object chúng ta dùng Array.isArray(arr) trả về true nếu là array, false nếu không phải array. Nếu false thì chúng ta dùng typeof để check lại đối tượng đó.
+console.log(Array.isArray([1, 2, 3, 4]), Array.isArray({}));
+console.log("-----------------------------------");
+var result = "A" && "B" && "C" && "D";
+console.log(result);
+//Đầu tiên check "A" có thuộc bất kỳ trường hợp falsy nào không. Nếu không nó sẽ chuyển sang "B" lần lượt đến "D", đến đây không còn phần tử nào nữa thì nó gán "D" cho result nên lệnh in sau đó sẽ có giá trị là "D"
+console.log("-----------------------------------");
+//String hay chuỗi có các phương thức
+//split() có cú pháp như sau được mô tả trong visual studio code: split(splitter: { [Symbol.split](string: string, limit?: number): string[]; }, limit?: number): string[]
+"Tôi yêu em".split();
