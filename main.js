@@ -224,5 +224,54 @@ console.log(result);
 //Đầu tiên check "A" có thuộc bất kỳ trường hợp falsy nào không. Nếu không nó sẽ chuyển sang "B" lần lượt đến "D", đến đây không còn phần tử nào nữa thì nó gán "D" cho result nên lệnh in sau đó sẽ có giá trị là "D"
 console.log("-----------------------------------");
 //String hay chuỗi có các phương thức
-//split() có cú pháp như sau được mô tả trong visual studio code: split(splitter: { [Symbol.split](string: string, limit?: number): string[]; }, limit?: number): string[]
-"Tôi yêu em".split();
+//split() có cú pháp như sau được mô tả trong visual studio code:
+//split(splitter: { [Symbol.split](string: string, limit?: number): string[]; }, limit?: number): string[]
+console.log("Toi yeu em".split(" ", 3));
+
+//Trong đó limit? : number quyết định số phần tử trong mảng được phép trả về, ví dụ: nếu limit là 1 thì mảng trả về chỉ có một phần tử kể từ phần tử đầu tiên, nếu là 2 thì sẽ có 2 phần tử kể từ phần tử đầu tiên, tối đa limit là độ dài của mảng khi không có đối số limit.
+console.log("-----------------------------------");
+//Xử lý chuỗi trước khi trả về mảng với phương thức from():
+console.log(
+  Array.from("Chuỗi này là ví dụ", function (string) {
+    return string + "";
+  })
+);
+console.log("-----------------------------------");
+//
+var arr = ["Son", "Nguyen", "The"];
+console.log(arr.splice(1, 0, "haha")); //[]
+console.log(arr); //["Son","haha","Nguyen", "The"]
+console.log("-----------------------------------");
+var arr1 = [[1, 2, 3], 4, 5, 6];
+var arr2 = [[7, 8], 9, 10, 11];
+console.log(
+  arr1.concat(arr2).reduce(function (accumulator, currentValue) {
+    return accumulator.concat(currentValue);
+  }, [])
+);
+
+console.log("-----------------------------------");
+var mangArray1 = [1, 2, 3];
+console.log(mangArray1.includes(1));
+console.log(mangArray1.includes(1, 0));
+console.log(mangArray1.includes(1, 1));
+var chuoiString1 = "Nguyen The Son";
+console.log(chuoiString1.includes(" "));
+console.log(chuoiString1.includes(" ", 11));
+console.log(chuoiString1.includes(" ", 8));
+console.log(chuoiString1.includes("H"));
+console.log("-----------------------------------");
+var inValue = function (param) {
+  if (typeof param === "function") param();
+  else return param;
+};
+
+function myCallback(value) {
+  console.log("Value: ", value);
+}
+inValue(myCallback(100000));
+console.log(inValue(100000));
+console.log("-----------------------------------");
+var myArr = ["Js", "Java", "C"];
+var newMyArr = Array.from(myArr, (e) => "Language: " + e);
+console.log(newMyArr);
