@@ -275,3 +275,7 @@ console.log("-----------------------------------");
 var myArr = ["Js", "Java", "C"];
 var newMyArr = Array.from(myArr, (e) => "Language: " + e);
 console.log(newMyArr);
+console.log("-----------------------------------");
+var arrName = ["Son", "Nguyen", "The"];
+console.log(arrName.slice(1, 2)); // ["Nguyen"]
+console.log(arrName); // ["Nguyen"]
