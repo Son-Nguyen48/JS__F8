@@ -279,3 +279,17 @@ console.log("-----------------------------------");
 var arrName = ["Son", "Nguyen", "The"];
 console.log(arrName.slice(1, 2)); // ["Nguyen"]
 console.log(arrName); // ["Nguyen"]
+console.log("-----------------------------------");
+Array.prototype.forEach2 = function (callback, initialValue) {
+  for (let i = 0; i < this.length; i++) {
+    initialValue = callback(initialValue, this[i]);
+  }
+  return initialValue;
+};
+
+var newArrName = [1, 2, 3].forEach2(function (accumulator, currentValue) {
+  console.log(accumulator, currentValue);
+  return accumulator + currentValue;
+}, 0);
+
+console.log(newArrName);
