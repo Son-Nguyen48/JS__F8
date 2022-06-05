@@ -293,3 +293,98 @@ var newArrName = [1, 2, 3].forEach2(function (accumulator, currentValue) {
 }, 0);
 
 console.log(newArrName);
+console.log("-----------------------------------");
+var object1 = [1, 2, 3];
+var object2 = [4, 5, 6];
+var object3 = [1, 2, ...object1];
+console.log(object3);
+console.log("-----------------------------------");
+
+var arr001 = ["Javascript", "Reactjs", "PHP"];
+
+Array.prototype.forEach2 = function (callback) {
+  for (var index in this) {
+    if (this.hasOwnProperty(index)) {
+      callback(this[index], index, this);
+    }
+  }
+};
+
+arr001.forEach2(function (element, index, array) {
+  console.log(element, index, array);
+});
+
+Array.prototype.filter2 = function (callback) {
+  var output = []; //Vi filter2() tra ve mang cac element thoa man dieu kien
+  for (var index in this) {
+    if (this.hasOwnProperty(index)) {
+      var result = callback(this[index], index, this);
+      if (result) {
+        output.push(this[index]);
+      }
+    }
+  }
+  return output;
+};
+
+console.log("-----------------------------------");
+
+var arrTest = [
+  {
+    id: 1,
+    language: "Javascript",
+    price: 0
+  },
+  {
+    id: 2,
+    language: "Vue",
+    price: 0
+  },
+  {
+    id: 3,
+    language: "PHP",
+    price: 100
+  }
+];
+
+var newArrTest = arrTest.filter(function (element, index, array) {
+  return element.price > 0;
+});
+
+console.log(newArrTest);
+console.log("-----------------------------------");
+
+Array.prototype.some2 = function (cb) {
+  for (var index in this) {
+    if (this.hasOwnProperty(index)) {
+      if (cb(this[index], index, this)) {
+        return true;
+      }
+    }
+  }
+  return false;
+};
+
+var courses = [
+  {
+    id: 1,
+    language: "Javascript",
+    price: 10000
+  },
+  {
+    id: 2,
+    language: "Vue",
+    price: 0
+  },
+  {
+    id: 1,
+    language: "PHP",
+    price: 100
+  }
+];
+
+var result = courses.some2(function (course, index, courses) {
+  return course.price > 1000;
+});
+
+console.log(result);
