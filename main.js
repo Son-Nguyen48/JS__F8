@@ -416,3 +416,7 @@ console.log("-----------------------------------");
 }
 
 console.log(varGlobal);
+console.log("-----------------------------------");
+let h1Element = {};
+h1Element.titleNode = document.getElementById("title");
+console.log(h1Element);
