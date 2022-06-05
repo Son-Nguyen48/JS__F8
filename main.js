@@ -354,6 +354,19 @@ var newArrTest = arrTest.filter(function (element, index, array) {
 console.log(newArrTest);
 console.log("-----------------------------------");
 
+Array.prototype.every2 = function (cb) {
+  var output = true;
+  for (var index in this) {
+    if (this.hasOwnProperty(index)) {
+      if (!cb(this[index], index, this)) {
+        output = false;
+        break;
+      }
+    }
+  }
+  return output;
+};
+
 Array.prototype.some2 = function (cb) {
   for (var index in this) {
     if (this.hasOwnProperty(index)) {
@@ -388,3 +401,18 @@ var result = courses.some2(function (course, index, courses) {
 });
 
 console.log(result);
+console.log(
+  courses.every2(function (course, index, courses) {
+    return course.price > 1000;
+  })
+);
+
+console.log("-----------------------------------");
+{
+  var varGlobal = "Day la bien toan cuc";
+  let letBlock = "Day la bien block";
+
+  console.log(letBlock);
+}
+
+console.log(varGlobal);
