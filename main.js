@@ -417,6 +417,20 @@ console.log("-----------------------------------");
 
 console.log(varGlobal);
 console.log("-----------------------------------");
-let h1Element = {};
-h1Element.titleNode = document.getElementById("title");
-console.log(h1Element);
+var productsListElement = document.getElementsByClassName("product-list");
+var firstProductElement = document.querySelector(".product-list:first-child");
+var buttonElements = document.getElementsByTagName("button");
+console.log(productsListElement);
+console.log(firstProductElement);
+console.log(buttonElements);
+console.log("-----------------------------------");
+var liNodeList = document.querySelectorAll(".box-1 li");
+//Want to do a few work with box-1 div and also all li tag
+//Work with box-1 first
+console.log(liNodeList);
+var boxNode = document.querySelector(".box-1");
+//Do some stuff here
+//Then work with all li child of box-1 div
+console.log(boxNode);
+var liNodeList1 = boxNode.querySelectorAll("li");
+console.log(liNodeList1);
