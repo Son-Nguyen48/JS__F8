@@ -522,3 +522,13 @@ Object.assign(boxNode.style, {
   height: "100px",
   backgroundColor: "red"
 });
+console.log("-------------------------------------------------");
+document.querySelector('input[type="text"]').oninput = function (e) {
+  console.log(e.target.value);
+};
+document.querySelector('input[type="checkbox"]').onchange = function (e) {
+  console.log(e.target.checked);
+};
+document.querySelector("select").onchange = function (e) {
+  console.log(e.target.value);
+};
