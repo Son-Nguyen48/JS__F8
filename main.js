@@ -470,3 +470,24 @@ div.classList.remove(...cls);
 
 // replace class "foo" with class "bar"
 div.classList.replace("foo", "bar");
+
+console.log("---------------------------------------------");
+//Code thế này thì không bị lỗi
+document.querySelector(".box-1").innerHTML =
+  '<div class="on">Khong bi loi</div>';
+//Còn thế này thì bị lỗi
+// document.querySelector(".box-1").innerHTML ="<div class="on">Sao lai loi</div>";
+
+var courses2 = ["HTML & CSS", "Javascript", "PHP", "Java"];
+
+function render(courses) {
+  var ulNode = document.querySelector(".courses-list");
+  var html = "";
+  for (var index in courses) {
+    html += `<li>${courses[index]}</li>`;
+  }
+  ulNode.innerHTML = html;
+  console.log(ulNode.innerHTML);
+}
+
+render(courses2);
