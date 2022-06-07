@@ -491,3 +491,7 @@ function render(courses) {
 }
 
 render(courses2);
+
+console.log("---------------------------------------------");
+
+console.log([document.querySelector(".courses-list")]);
