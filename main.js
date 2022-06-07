@@ -495,3 +495,30 @@ render(courses2);
 console.log("---------------------------------------------");
 
 console.log([document.querySelector(".courses-list")]);
+console.log("---------------------------------------------");
+var divList = document.querySelectorAll("div");
+var divList2 = document.getElementsByTagName("div");
+console.log(divList);
+console.log(divList2);
+divList.forEach(function (divItem) {
+  divItem.classList.add("box");
+});
+console.log("---------------------------------------------");
+var h2nodes = document.querySelectorAll("h2");
+console.log(h2nodes);
+for (var index in h2nodes) {
+  h2nodes[index].onclick = function (e) {
+    console.log(e.target);
+  };
+}
+
+console.log("-------------------------------------------------");
+var boxNode = document.querySelector(".box-1");
+console.log(boxNode);
+
+//Không muốn phải lặp lại điều trên ta có cách làm như sau:
+Object.assign(boxNode.style, {
+  width: "200px",
+  height: "100px",
+  backgroundColor: "red"
+});
