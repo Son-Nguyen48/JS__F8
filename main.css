@@ -45,3 +45,38 @@ button {
   border-radius: 999px;
   border: none;
 }
+
+ul {
+  display: none;
+}
+
+input:focus ~ ul {
+  display: block;
+}
+
+.main {
+  width: 50rem;
+  text-align: center;
+  font-size: 2rem;
+  color: antiquewhite;
+}
+
+#id1 {
+  height: 20rem;
+  width: 50%;
+  margin: 0 auto;
+  background-color: #fff;
+}
+
+#id2 {
+  height: 15rem;
+  margin: 0 auto;
+  width: 50%;
+  background-color: #333;
+}
+#id3 {
+  height: 10rem;
+  margin: 0 auto;
+  width: 50%;
+  background-color: #f05123;
+}
