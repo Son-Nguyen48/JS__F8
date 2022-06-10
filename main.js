@@ -632,21 +632,52 @@
 //     document.getElementById("user-block").innerHTML = html;
 //   });
 
-var coursesAPI = "http://localhost:3000/course";
+// var coursesAPI = "http://localhost:3000/course";
 
-fetch(coursesAPI)
-  .then(function (response) {
-    return response.json();
-  })
-  .then(function (courses) {
-    var htmls = courses.map(function (course) {
-      return `<li>
-        <h2>${course.id}</h2>
-        <img src="${course.urlImage}">
-        <h2>${course.name}</h2>
-        <h2>${course.description}</h2>
-      </li>`;
-    });
-    var html = htmls.join("");
-    document.getElementById("user-block").innerHTML = html;
+// fetch(coursesAPI)
+//   .then(function (response) {
+//     return response.json();
+//   })
+//   .then(function (courses) {
+//     var htmls = courses.map(function (course) {
+//       return `<li>
+//         <h2>${course.id}</h2>
+//         <img src="${course.urlImage}">
+//         <h2>${course.name}</h2>
+//         <h2>${course.description}</h2>
+//       </li>`;
+//     });
+//     var html = htmls.join("");
+//     document.getElementById("user-block").innerHTML = html;
+//   });
+
+var coursesAPI = " http://localhost:3000/course";
+
+function start() {
+  getCourses(renderCourse);
+}
+
+start();
+
+//function
+
+function getCourses(callback) {
+  fetch(coursesAPI)
+    .then(function (response) {
+      return response.json();
+    })
+    .then(callback);
+}
+
+function renderCourse(courses) {
+  var listCoursesBlock = document.querySelector("#list-courses");
+  var htmls = courses.map(function (course) {
+    return `
+    <li>
+      <h4>${course.name}</h4>
+      <p>${course.description}</p>
+    </li>`;
   });
+
+  listCoursesBlock.innerHTML = htmls.join("");
+}
