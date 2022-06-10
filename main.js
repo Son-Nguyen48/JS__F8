@@ -642,6 +642,7 @@ fetch(coursesAPI)
     var htmls = courses.map(function (course) {
       return `<li>
         <h2>${course.id}</h2>
+        <img src="${course.urlImage}">
         <h2>${course.name}</h2>
         <h2>${course.description}</h2>
       </li>`;
