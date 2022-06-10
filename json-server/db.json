@@ -35,6 +35,21 @@
       "name": "nodejs",
       "urlImage": "https://wiki.tino.org/wp-content/uploads/2021/07/word-image-1155.png",
       "description": "Lap trinh nang cao Backend"
+    },
+    {
+      "name": "1",
+      "description": "2",
+      "id": 9
+    },
+    {
+      "name": "Golang",
+      "description": "Ngon ngu bac cao cua C",
+      "id": 10
+    },
+    {
+      "name": "Java ",
+      "description": "Ngon ngu pho da cu pho bien mot thoi",
+      "id": 11
     }
   ]
 }

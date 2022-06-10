@@ -6,10 +6,6 @@
 }
 
 body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
   background-color: #f5f7f5;
   font-family: "Poppins", sans-serif;
 }
