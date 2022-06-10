@@ -568,45 +568,66 @@
 //   console.log("Click me");
 // };
 
-var json = '["php","javascript"]';
-var json1 = '{"name": "Son2k", "age": 27}';
-var object = {
-  name: "son2k",
-  number: 01,
-  age: 27
-};
+// var json = '["php","javascript"]';
+// var json1 = '{"name": "Son2k", "age": 27}';
+// var object = {
+//   name: "son2k",
+//   number: 01,
+//   age: 27
+// };
 
-console.log(JSON.parse(json1));
-console.log(object);
-//Trường hợp này in ra 1 < 2 la dung sau 3s đúng như anh Sơn dạy
-var promise = new Promise(function (resolve, reject) {
-  if (1 < 2) {
-    return resolve("1 < 2 la dung");
-  } else return reject();
-});
+// console.log(JSON.parse(json1));
+// console.log(object);
+// //Trường hợp này in ra 1 < 2 la dung sau 3s đúng như anh Sơn dạy
+// var promise = new Promise(function (resolve, reject) {
+//   if (1 < 2) {
+//     return resolve("1 < 2 la dung");
+//   } else return reject();
+// });
 
-promise
-  .then(function (data) {
-    return new Promise(function (resolve) {
-      setTimeout(resolve(data), 3000);
-    });
-  })
-  .then(function (data) {
-    console.log(data);
-  })
-  .catch()
-  .finally();
+// promise
+//   .then(function (data) {
+//     return new Promise(function (resolve) {
+//       setTimeout(resolve(data), 3000);
+//     });
+//   })
+//   .then(function (data) {
+//     console.log(data);
+//   })
+//   .catch()
+//   .finally();
 //Trường hợp này in ra 1 < 2 la dung ngay lập tức
-promise
-  .then(function (data) {
-    return new Promise(function (resolve) {
-      setTimeout(function () {
-        resolve(data);
-      }, 3000);
+// promise
+//   .then(function (data) {
+//     return new Promise(function (resolve) {
+//       setTimeout(function () {
+//         resolve(data);
+//       }, 3000);
+//     });
+//   })
+//   .then(function (data) {
+//     console.log(data);
+//   })
+//   .catch()
+//   .finally();
+
+var postAPI = "https://jsonplaceholder.typicode.com/users";
+
+fetch(postAPI)
+  .then(function (response) {
+    return response.json();
+  })
+  .then(function (users) {
+    var htmls = users.map(function (user) {
+      return `<li>
+        <h2>${user.name}</h2>
+        <h2>${user.id}</h2>
+        <h2>${user.company.name}</h2>
+        <h2>${user.address.street}</h2>
+      </li>`;
     });
-  })
-  .then(function (data) {
-    console.log(data);
-  })
-  .catch()
-  .finally();
+
+    var html = htmls.join("");
+    console.log(html);
+    document.getElementById("user-block").innerHTML = html;
+  });
