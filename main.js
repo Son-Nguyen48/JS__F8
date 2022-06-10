@@ -611,23 +611,41 @@
 //   .catch()
 //   .finally();
 
-var postAPI = "https://jsonplaceholder.typicode.com/users";
+// var postAPI = "https://jsonplaceholder.typicode.com/users";
 
-fetch(postAPI)
+// fetch(postAPI)
+//   .then(function (response) {
+//     return response.json();
+//   })
+//   .then(function (users) {
+//     var htmls = users.map(function (user) {
+//       return `<li>
+//         <h2>${user.name}</h2>
+//         <h2>${user.id}</h2>
+//         <h2>${user.company.name}</h2>
+//         <h2>${user.address.street}</h2>
+//       </li>`;
+//     });
+
+//     var html = htmls.join("");
+//     console.log(html);
+//     document.getElementById("user-block").innerHTML = html;
+//   });
+
+var coursesAPI = "http://localhost:3000/course";
+
+fetch(coursesAPI)
   .then(function (response) {
     return response.json();
   })
-  .then(function (users) {
-    var htmls = users.map(function (user) {
+  .then(function (courses) {
+    var htmls = courses.map(function (course) {
       return `<li>
-        <h2>${user.name}</h2>
-        <h2>${user.id}</h2>
-        <h2>${user.company.name}</h2>
-        <h2>${user.address.street}</h2>
+        <h2>${course.id}</h2>
+        <h2>${course.name}</h2>
+        <h2>${course.description}</h2>
       </li>`;
     });
-
     var html = htmls.join("");
-    console.log(html);
     document.getElementById("user-block").innerHTML = html;
   });
