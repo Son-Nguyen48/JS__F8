@@ -37,11 +37,6 @@
       "description": "Lap trinh nang cao Backend"
     },
     {
-      "name": "1",
-      "description": "2",
-      "id": 9
-    },
-    {
       "name": "Golang",
       "description": "Ngon ngu bac cao cua C",
       "id": 10
@@ -52,19 +47,9 @@
       "id": 11
     },
     {
-      "name": "Nguyễn Thế Sơn",
-      "description": "www",
+      "name": "Kệ đi chạy là được ",
+      "description": "ok chưa",
       "id": 12
-    },
-    {
-      "name": "Nguyễn Thế Sơn",
-      "description": "www",
-      "id": 13
-    },
-    {
-      "name": "www",
-      "description": "www",
-      "id": 14
     }
   ]
 }
