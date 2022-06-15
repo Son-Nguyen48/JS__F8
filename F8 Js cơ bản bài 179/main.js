@@ -710,52 +710,6 @@
 //   };
 // }
 
-// var users = [
-//   {
-//     id: 1,
-//     name: "Kien Dam"
-//   },
-//   {
-//     id: 2,
-//     name: "Dang Son"
-//   },
-//   {
-//     id: 3,
-//     name: "Tien Dam"
-//   }
-// ];
-
-// var comments = [
-//   {
-//     id: 1,
-//     user_id: 1,
-//     content: "Anh Son chua ra video anh oi"
-//   },
-//   {
-//     id: 2,
-//     user_id: 2,
-//     content: "Anh vua ra em oi"
-//   }
-// ];
-
-// function getComments() {
-//   return new Promise(function (resolve) {
-//     setTimeout(function () {
-//       resolve(comments);
-//     }, 1000);
-//   });
-// }
-
-// getComments().then(function (comments) {
-//   var userIds = comments.map(function () {
-//     return comments.user_id;
-//   });
-// });
-
-// getUsersByIds(1).then(function (users) {
-//   console.log(users);
-// });
-
 // //https://www.codewars.com/kata/5679aa472b8f57fb8c000047
 // //My solution down here
 // function findEvenIndex(arr) {
@@ -840,3 +794,379 @@
 // //Link parseInt()
 // // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseInt
 // console.log(binaryArrayToNumber2([1, 1, 1, 1]));
+
+// var users = [
+//   {
+//     id: 1,
+//     name: "Kien Dam"
+//   },
+//   {
+//     id: 2,
+//     name: "Dang Son"
+//   },
+//   {
+//     id: 3,
+//     name: "Tien Dam"
+//   }
+// ];
+
+// var comments = [
+//   {
+//     id: 1,
+//     user_id: 1,
+//     content: "Anh Son chua ra video anh oi"
+//   },
+//   {
+//     id: 2,
+//     user_id: 2,
+//     content: "Anh vua ra em oi"
+//   },
+//   {
+//     id: 3,
+//     user_id: 1,
+//     content: "OK cam on anh"
+//   }
+// ];
+
+// function getComments() {
+//   return new Promise(function (resolve) {
+//     setTimeout(function () {
+//       resolve(comments);
+//     }, 1000);
+//   });
+// }
+
+// function getUsersByIds(userIds) {
+//   return new Promise(function (resolve) {
+//     setTimeout(function () {
+//       var result = users.filter(function (user) {
+//         return userIds.includes(user.id);
+//       });
+//       resolve(result);
+//     }, 1000);
+//   });
+// }
+
+// getComments()
+//   .then(function (comments) {
+//     var userIds = comments.map(function (comment) {
+//       return comment.user_id;
+//     });
+//     return getUsersByIds(userIds).then(function (users) {
+//       return {
+//         users: users,
+//         comments: comments
+//       };
+//     });
+//   })
+//   .then(function (data) {
+//     var commentBlock = document.querySelector("#comment-block");
+//     var html = "";
+//     data.comments.forEach(function (comment) {
+//       var user = data.users.find(function (user) {
+//         return user.id === comment.user_id;
+//       });
+//       html += `<li>${user.name}: ${comment.content}</li>`;
+//     });
+//     commentBlock.innerHTML = html;
+//   });
+////Tự viết hàm filter2
+// Array.prototype.filter2 = function (callback) {
+//   var output = [];
+//   for (var index in this) {
+//     if (this.hasOwnProperty(index)) {
+//       var result = callback(this[index], index, this);
+//       console.log(result);
+//       if (result) {
+//         output.push(this[index]);
+//       }
+//     }
+//   }
+//   return output;
+// };
+
+// var arrTest = [
+//   {
+//     id: 1,
+//     language: "Javascript",
+//     price: 0
+//   },
+//   {
+//     id: 2,
+//     language: "Vue",
+//     price: 0
+//   },
+//   {
+//     id: 3,
+//     language: "PHP",
+//     price: 100
+//   }
+// ];
+
+// var newArrTest = arrTest.filter2(function (element, index, array) {
+//   return element.price > 0;
+// });
+
+// console.log(newArrTest);
+
+//Tự viết hàm some2()
+
+// Array.prototype.every2 = function (callback) {
+//   for (var index in this) {
+//     if (this.hasOwnProperty(index)) {
+//       if (!callback(this[index], index, this)) {
+//         return false;
+//       }
+//     }
+//   }
+//   return true;
+// };
+
+// var arrTest = [
+//   {
+//     id: 1,
+//     language: "Javascript",
+//     price: 0
+//   },
+//   {
+//     id: 2,
+//     language: "Vue",
+//     price: 0
+//   },
+//   {
+//     id: 3,
+//     language: "PHP",
+//     price: 100
+//   },
+//   {
+//     id: 4,
+//     language: "Vue",
+//     price: 100
+//   }
+// ];
+
+// var newArrTest = arrTest.map(function (element, index, array) {
+//   return element.id;
+// });
+
+// console.log(newArrTest);
+// // console.log(arrTest);
+
+// Array.prototype.reduce2 = function (cb, initialValue) {
+//   let index = 0;
+//   if (arguments.length < 2) {
+//     //Quan trọng này. Số đối số truyền vào < 2
+//     initialValue = this[0];
+//     index = 1;
+//   }
+//   let arrLength = this.length;
+//   for (; index < arrLength; index++) {
+//     var initialValue = cb(initialValue, this[index], index, this); //Quan trọng này.
+//   }
+//   return initialValue;
+// };
+
+// let result = arrTest.reduce2(function (
+//   accumulator,
+//   currentValue,
+//   currentIndex,
+//   array
+// ) {
+//   return accumulator.concat(currentValue.price);
+// },
+// "");
+
+// console.log(result);
+
+// Array.prototype.filter2 = function (cb) {
+//   var output = [];
+//   for (let index in this) {
+//     if (this.hasOwnProperty(index)) {
+//       if (cb(this[index], index, this)) {
+//         output.push(this[index]);
+//       }
+//     }
+//   }
+//   return output;
+// };
+// function checking(course, index, courses) {
+//   return course.price > 0;
+// }
+
+// var result = arrTest.filter2(checking);
+
+// console.log(result);
+
+// Array.prototype.map2 = function (cb) {
+//   let output = [];
+//   for (let index in this) {
+//     if (this.hasOwnProperty(index)) {
+//       var result = cb(this[index], index, this);
+//       output.push(result);
+//     }
+//   }
+//   return output;
+// };
+
+// function returnMap2(course, index, courses) {
+//   return course.id;
+// }
+
+// var result = arrTest.map2(returnMap2);
+
+// console.log(result);
+
+// Array.prototype.reduce2 = function (callback, initialValue) {
+//   let index = 0;
+//   if (arguments.length < 2) {
+//     index = 1;
+//     initialValue = this[0];
+//   }
+//   const arrLength = this.length;
+//   for (; index < arrLength; index++) {
+//     initialValue = callback(initialValue, this[index], index, this);
+//   }
+//   return initialValue;
+// };
+
+// function templateFunction(accumulator, currentValue, currentIndex, array) {
+//   return accumulator.concat(currentValue);
+// }
+
+// var result = arrTest.reduce2(templateFunction, []);
+// console.log(result);
+
+var users = [
+  {
+    id: 1,
+    name: "Kien Dam"
+  },
+  {
+    id: 2,
+    name: "Son Dang"
+  },
+  {
+    id: 3,
+    name: "Tien Dam"
+  }
+];
+
+var comments = [
+  {
+    id: 1,
+    userId: 1,
+    content: "Anh Son chua ra video ha anh?"
+  },
+  {
+    id: 1,
+    userId: 2,
+    content: "Anh vua ra roi em oi!"
+  },
+  {
+    id: 3,
+    userId: 1,
+    content: "OK em cam on anh!"
+  },
+  {
+    id: 4,
+    userId: 2,
+    content: "Vao xem di em oi"
+  }
+];
+
+// function getComments() {
+//   return new Promise(function (resolve) {
+//     setTimeout(function () {
+//       resolve(comments);
+//     }, 1000);
+//   });
+// }
+
+// function getUsersByIds(userId) {
+//   return new Promise(function (resolve) {
+//     setTimeout(function () {
+//       var result = users.filter(function (user) {
+//         return userId.includes(user.id);
+//       });
+//       resolve(result);
+//     }, 1000);
+//   });
+// }
+
+// getComments().then(function (data) {
+//   var userIds = comments.map(function (comment) {
+//     return comment.userId;
+//   });
+
+//   return getUsersByIds(userIds)
+//     .then(function () {
+//       return {
+//         users: users,
+//         comments: comments
+//       };
+//     })
+//     .then(function (data) {
+//       var commentBlock = document.querySelector("#comment-block");
+//       var html = "";
+//       console.log(data.comments);
+//       data.comments.forEach(function (comment) {
+//         var user = data.users.find(function (user) {
+//           console.log(user);
+//           return user.id === comment.userId;
+//         });
+//         html += `
+//         <li>${user.name}: ${comment.content}</li>
+//         `;
+//       });
+//       commentBlock.innerHTML = html;
+//     });
+// });
+
+//Tại sao phải trả về 1 promise ở đây
+//Trả về comments để xử lý bất đồng bộ
+function getComments() {
+  return new Promise(function (resolve) {
+    //Vì muốn xử lý bất đồng bộ
+    setTimeout(function () {
+      resolve(comments);
+    }, 1000);
+  });
+}
+
+function getUsersByIds(userIds) {
+  return new Promise(function (resolve) {
+    setTimeout(function () {
+      var result = users.filter(function (user) {
+        return userIds.includes(user.id);
+      });
+      resolve(result);
+    }, 1000);
+  });
+}
+
+getComments().then(function (comments) {
+  //Lấy ra mảng các userId
+  var userIds = comments.map(function (comment) {
+    return comment.userId;
+  });
+
+  return getUsersByIds(userIds)
+    .then(function () {
+      return {
+        users: users,
+        comments: comments
+      };
+    })
+    .then(function (data) {
+      var html = "";
+      var commentBlock = document.querySelector("#comment-block");
+      data.comments.forEach(function (comment) {
+        var user = data.users.find(function (user) {
+          return user.id === comment.userId;
+        });
+        console.log(user);
+        html += `<li>${user.name}: ${comment.content}</li>`;
+      });
+      commentBlock.innerHTML = html;
+    });
+});
