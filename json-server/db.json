@@ -50,6 +50,28 @@
       "name": "Kệ đi chạy là được ",
       "description": "ok chưa",
       "id": 12
+    },
+    {
+      "name": "Kiến Thức Nhập Môn IT",
+      "urlImage": "https://wiki.tino.org/wp-content/uploads/2021/07/word-image-1155.png",
+      "description": "Để có cái nhìn tổng quan về ngành IT - Lập trình web các bạn nên xem các videos tại khóa này trước nhé.",
+      "id": 13
+    },
+    {
+      "name": "HTML, CSS từ Zero đến Hero",
+      "urlImage": "https://wiki.tino.org/wp-content/uploads/2021/07/word-image-1155.png",
+      "description": "Trong khóa này chúng ta sẽ cùng nhau xây dựng giao diện 2 trang web là The Band & Shopee.",
+      "id": 14
+    },
+    {
+      "name": "Lập Trình JavaScript Cơ Bản",
+      "description": "Học Javascript cơ bản phù hợp cho người chưa từng học lập trình. Với hơn 100 bài học và có bài tập thực hành sau mỗi bài học.",
+      "id": 15
+    },
+    {
+      "name": "Xây Dựng Website với ReactJS",
+      "description": "Khóa học ReactJS từ cơ bản tới nâng cao, kết quả của khóa học này là bạn có thể làm hầu hết các dự án thường gặp với ReactJS. Cuối khóa học này bạn sẽ sở hữu một dự án giống Tiktok.com, bạn có thể tự tin đi xin việc khi nắm chắc các kiến thức được chia sẻ trong khóa học này.",
+      "id": 16
     }
   ]
 }

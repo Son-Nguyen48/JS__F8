@@ -1039,15 +1039,15 @@
 var users = [
   {
     id: 1,
-    name: "Kien Dam"
+    name: "Kiên Đàm"
   },
   {
     id: 2,
-    name: "Son Dang"
+    name: "Sơn Đặng"
   },
   {
     id: 3,
-    name: "Tien Dam"
+    name: "Tiến Đàm"
   }
 ];
 
@@ -1055,22 +1055,32 @@ var comments = [
   {
     id: 1,
     userId: 1,
-    content: "Anh Son chua ra video ha anh?"
+    content: "Anh Sơn chưa ra video hả anh?"
   },
   {
     id: 1,
     userId: 2,
-    content: "Anh vua ra roi em oi!"
+    content: "Anh vừa ra rồi em ơi!"
   },
   {
     id: 3,
     userId: 1,
-    content: "OK em cam on anh!"
+    content: "OK em cám ơn anh!"
   },
   {
     id: 4,
     userId: 2,
-    content: "Vao xem di em oi"
+    content: "Vào xem đi em ơi"
+  },
+  {
+    id: 5,
+    userId: 1,
+    content: "OK em vào xem ngay đây anh ơi"
+  },
+  {
+    id: 6,
+    userId: 3,
+    content: "Em like, share, và subscrible cho anh rồi nhé!"
   }
 ];
 
@@ -1122,51 +1132,79 @@ var comments = [
 //     });
 // });
 
-//Tại sao phải trả về 1 promise ở đây
-//Trả về comments để xử lý bất đồng bộ
-function getComments() {
-  return new Promise(function (resolve) {
-    //Vì muốn xử lý bất đồng bộ
-    setTimeout(function () {
-      resolve(comments);
-    }, 1000);
-  });
+var courseAPI = "http://localhost:3000/course";
+
+function start() {
+  getCourse(renderCourses);
+
+  handleCreateForm();
 }
 
-function getUsersByIds(userIds) {
-  return new Promise(function (resolve) {
-    setTimeout(function () {
-      var result = users.filter(function (user) {
-        return userIds.includes(user.id);
-      });
-      resolve(result);
-    }, 1000);
-  });
-}
+start();
 
-getComments().then(function (comments) {
-  //Lấy ra mảng các userId
-  var userIds = comments.map(function (comment) {
-    return comment.userId;
-  });
-
-  return getUsersByIds(userIds)
-    .then(function () {
-      return {
-        users: users,
-        comments: comments
-      };
+function getCourse(callback) {
+  fetch(courseAPI)
+    .then(function (response) {
+      return response.json();
     })
-    .then(function (data) {
-      var html = "";
-      var commentBlock = document.querySelector("#comment-block");
-      data.comments.forEach(function (comment) {
-        var user = data.users.find(function (user) {
-          return user.id === comment.userId;
-        });
-        console.log(user);
-        html += `<li>${user.name}: ${comment.content}</li>`;
-      });
-      commentBlock.innerHTML = html;
+    .then(callback);
+}
+
+function renderCourses(courses) {
+  var listCoursesBlock = document.querySelector("#list-courses");
+  var htmls = courses.map(function (course) {
+    return `<li class="course-item-${course.id}">
+    <h4>${course.name}</h4>
+    <p>${course.description}</p>
+    <button onclick="handleDeleteCourse(${course.id})">&times;</button>
+    </li>`;
+  });
+  listCoursesBlock.innerHTML = htmls.join("");
+}
+
+function createCourse(data, callback) {
+  fetch(courseAPI, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(data)
+  })
+    .then(function (response) {
+      response.json();
+    })
+    .then(callback);
+}
+
+function handleCreateForm() {
+  var createBtn = document.querySelector("#create");
+  createBtn.onclick = function () {
+    var name = document.querySelector('input[name="name"]').value;
+    var description = document.querySelector('input[name="description"]').value;
+    var formData = {
+      name: name,
+      description: description
+    };
+    createCourse(formData, function () {
+      getCourse(renderCourses);
     });
-});
+  };
+}
+
+function handleDeleteCourse(id) {
+  fetch(courseAPI + "/" + id, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json"
+    }
+  })
+    .then(function (response) {
+      response.json();
+    })
+    .then(function () {
+      var courseItem = document.querySelector(".course-item-" + id);
+      if (courseItem) {
+        courseItem.remove();
+      }
+    });
+}
