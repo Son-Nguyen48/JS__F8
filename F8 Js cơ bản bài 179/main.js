@@ -1033,8 +1033,8 @@
 //   return accumulator.concat(currentValue);
 // }
 
-// var result = arrTest.reduce2(templateFunction, []);
-// console.log(result);
+// var result1 = arrTest.reduce2(templateFunction, []);
+// console.log(result1);
 
 var users = [
   {
@@ -1131,80 +1131,156 @@ var comments = [
 //       commentBlock.innerHTML = html;
 //     });
 // });
+//179 -THEM,XOA KHOA HOC VOI FETCH VA REST API ----------------------------------------------------------------
+// var courseAPI = "http://localhost:3000/course";
 
-var courseAPI = "http://localhost:3000/course";
+// function start() {
+//   getCourse(renderCourses);
 
-function start() {
-  getCourse(renderCourses);
+//   handleCreateForm();
+// }
 
-  handleCreateForm();
-}
+// start();
 
-start();
+// function getCourse(callback) {
+//   fetch(courseAPI)
+//     .then(function (response) {
+//       return response.json();
+//     })
+//     .then(callback);
+// }
 
-function getCourse(callback) {
-  fetch(courseAPI)
-    .then(function (response) {
-      return response.json();
-    })
-    .then(callback);
-}
+// function renderCourses(courses) {
+//   var listCoursesBlock = document.querySelector("#list-courses");
+//   var htmls = courses.map(function (course) {
+//     return `<li class="course-item-${course.id}">
+//     <h4>${course.name}</h4>
+//     <p>${course.description}</p>
+//     <button onclick="handleDeleteCourse(${course.id})">&times;</button>
+//     </li>`;
+//   });
+//   listCoursesBlock.innerHTML = htmls.join("");
+// }
 
-function renderCourses(courses) {
-  var listCoursesBlock = document.querySelector("#list-courses");
-  var htmls = courses.map(function (course) {
-    return `<li class="course-item-${course.id}">
-    <h4>${course.name}</h4>
-    <p>${course.description}</p>
-    <button onclick="handleDeleteCourse(${course.id})">&times;</button>
-    </li>`;
-  });
-  listCoursesBlock.innerHTML = htmls.join("");
-}
+// function createCourse(data, callback) {
+//   fetch(courseAPI, {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json"
+//     },
+//     body: JSON.stringify(data)
+//   })
+//     .then(function (response) {
+//       response.json();
+//     })
+//     .then(callback);
+// }
 
-function createCourse(data, callback) {
-  fetch(courseAPI, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify(data)
-  })
-    .then(function (response) {
-      response.json();
-    })
-    .then(callback);
-}
+// function handleCreateForm() {
+//   var createBtn = document.querySelector("#create");
+//   createBtn.onclick = function () {
+//     var name = document.querySelector('input[name="name"]').value;
+//     var description = document.querySelector('input[name="description"]').value;
+//     var formData = {
+//       name: name,
+//       description: description
+//     };
+//     createCourse(formData, function () {
+//       getCourse(renderCourses);
+//     });
+//   };
+// }
 
-function handleCreateForm() {
-  var createBtn = document.querySelector("#create");
-  createBtn.onclick = function () {
-    var name = document.querySelector('input[name="name"]').value;
-    var description = document.querySelector('input[name="description"]').value;
-    var formData = {
-      name: name,
-      description: description
+// function handleDeleteCourse(id) {
+//   fetch(courseAPI + "/" + id, {
+//     method: "DELETE",
+//     headers: {
+//       "Content-Type": "application/json"
+//     }
+//   })
+//     .then(function (response) {
+//       response.json();
+//     })
+//     .then(function () {
+//       var courseItem = document.querySelector(".course-item-" + id);
+//       if (courseItem) {
+//         courseItem.remove();
+//       }
+//     });
+// }
+
+// var object = {
+//   name: "son2k",
+//   age: 27
+// };
+// let { name, age, job = "Development", wage: budget = "single" } = object;
+
+// console.log(name, age, job, budget);
+
+// let employee = {
+//   id: 1,
+//   fullName: {
+//     firstName: "Nguyen",
+//     lastName: "Son"
+//   },
+//   children: {
+//     {
+//       id: 1,
+//       name: "Doanh"
+//     },
+//     {
+//       id: 2,
+//       name: "Ngoc"
+//     }
+//   }
+// };
+
+// //Destructuring
+// let {
+//   fullName: { firstName, lastName, middleName: middleName = "The" },
+//   age: dateOfBirth = 1995
+// } = employee;
+
+// console.log(firstName, middleName, lastName, dateOfBirth);
+
+// let { ...rest } = employee;
+// console.log(rest);
+
+// var user = {
+//   name: "Son Dang",
+//   age: 32,
+//   children: {
+//     name: "Nam Dang"
+//   }
+// };
+
+// let {
+//   name: fatherName,
+//   age: fatherAge,
+//   children: { name: childrenName }
+// } = user;
+
+// console.log(childrenName);
+
+var human = [
+  { id: 1, name: "A", gender: "male" },
+  { id: 2, name: "B", gender: "male" },
+  { id: 3, name: "C", gender: "female" },
+  { id: 4, name: "D", gender: "female" },
+  { id: 5, name: "E", gender: "male" }
+];
+
+var output = [];
+var results = human.map(function (item) {
+  if (item.gender === "male") {
+    let result = {
+      human: `${item.name}${item.id}`,
+      gender: item.gender
     };
-    createCourse(formData, function () {
-      getCourse(renderCourses);
-    });
-  };
-}
+    var [...rest] = [result];
+    output.push(result);
+  }
+  return output;
+});
 
-function handleDeleteCourse(id) {
-  fetch(courseAPI + "/" + id, {
-    method: "DELETE",
-    headers: {
-      "Content-Type": "application/json"
-    }
-  })
-    .then(function (response) {
-      response.json();
-    })
-    .then(function () {
-      var courseItem = document.querySelector(".course-item-" + id);
-      if (courseItem) {
-        courseItem.remove();
-      }
-    });
-}
+console.log(results);
