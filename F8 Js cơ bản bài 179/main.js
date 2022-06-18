@@ -1262,24 +1262,127 @@ var comments = [
 
 // console.log(childrenName);
 
-var human = [
-  { id: 1, name: "A", gender: "male" },
-  { id: 2, name: "B", gender: "male" },
-  { id: 3, name: "C", gender: "female" },
-  { id: 4, name: "D", gender: "female" },
-  { id: 5, name: "E", gender: "male" }
-];
+// var human = [
+//   { id: 1, name: "A", gender: "male" },
+//   { id: 2, name: "B", gender: "male" },
+//   { id: 3, name: "C", gender: "female" },
+//   { id: 4, name: "D", gender: "female" },
+//   { id: 5, name: "E", gender: "male" }
+// ];
+// let startTime = new Date().getTime();
+// var leng = human.length;
+// var result = [];
+// for (var index = 0; index < leng; index++) {
+//   if (human[index].gender === "female") continue;
+//   else {
+//     result[result.length] = {
+//       human: `${human[index].name}${human[index].id}`,
+//       gender: human[index].gender
+//     };
+//   }
+// }
+// let endTime = new Date().getTime();
+// console.log(result);
+// console.log(
+//   "Duration with operator is: " + (endTime - startTime),
+//   startTime,
+//   endTime
+// );
+// let startTime2 = new Date().getTime();
 
-var leng = human.length;
-var result = [];
-for (var index = 0; index < leng; index++) {
-  if (human[index].gender === "female") continue;
-  else {
-    result[result.length] = {
-      human: `${human[index].name}${human[index].id}`,
-      gender: human[index].gender
-    };
-  }
+// var result1 = [];
+// for (let item of human) {
+//   if (item.gender === "male") {
+//     result1.push({
+//       human: item.name + item.id,
+//       gender: item.gender
+//     });
+//   }
+// }
+
+// console.log(result1);
+// let endTime2 = new Date().getTime();
+// console.log(
+//   "Duration with push method is: " + (endTime2 - startTime2),
+//   startTime2,
+//   endTime2
+// );
+
+// function show({ name, age, children: { name: childrenName }, ...rest }) {
+//   console.log(name, age, childrenName, rest);
+// }
+
+// show({
+//   name: "son2k",
+//   age: 22,
+//   children: {
+//     name: "Doanh"
+//   },
+//   job: "Development",
+//   budget: 1000000000
+// });
+
+// function show2([a, b, ...rest]) {
+//   console.log(a, b, rest);
+// }
+
+// show2([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]);
+
+// var arr1 = [1, 2, 3, 4, 5, 6, 7, 8];
+// var arr2 = [9, 10, 11, 12];
+// var arr3 = [...arr1, ...arr2];
+// console.log(arr3);
+
+// var object1 = { a: 1, b: 2, c: 3 };
+// var object2 = { d: 4, e: 5 };
+// var object3 = { ...object1, ...object2 };
+// console.log(object3);
+
+// var spreadArray = ["son2k", "bach2k1", 1, 2, 3, 4];
+// function logger([...rest]) {
+//   for (let index in rest) {
+//     console.log(index);
+//   }
+// }
+
+// console.log(...spreadArray);
+
+// const person1 = {
+//   name: "Son",
+//   age: 21
+// };
+
+// const person2 = { ...person1 };
+// console.log(person2.name); // Output: 'Son'
+// console.log(person2.age); // Output: 21
+// console.log(person1 === person2); // Output: false
+
+function highlight([first, ...strings], ...values) {
+  return values
+    .reduce(
+      (acc, curr) => [...acc, `<span>${curr}</span>`, strings.shift()],
+      [first]
+    )
+    .join("");
 }
+var brand = "F8";
+var course = "JavaScript";
+var html = highlight`Hoc lap trinh ${course} tai ${brand}!`;
+console.log(html);
 
-console.log(result);
+import logger from "./logger.js";
+import * as contants from "./logger.js";
+
+console.log(contants);
+
+console.log(typeof logger, logger("Day la mot loi", contants.TYPE_ERROR)); //function 'Son2k'
+
+const object = {
+  name: "Alice",
+  cat: {
+    name: "Dinah"
+  }
+};
+
+console.log(object.cat?.name); //'Dinah'
+console.log(object.dog?.name); //undefined
