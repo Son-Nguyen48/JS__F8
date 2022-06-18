@@ -1270,17 +1270,16 @@ var human = [
   { id: 5, name: "E", gender: "male" }
 ];
 
-var output = [];
-var results = human.map(function (item) {
-  if (item.gender === "male") {
-    let result = {
-      human: `${item.name}${item.id}`,
-      gender: item.gender
+var leng = human.length;
+var result = [];
+for (var index = 0; index < leng; index++) {
+  if (human[index].gender === "female") continue;
+  else {
+    result[result.length] = {
+      human: `${human[index].name}${human[index].id}`,
+      gender: human[index].gender
     };
-    var [...rest] = [result];
-    output.push(result);
   }
-  return output;
-});
+}
 
-console.log(results);
+console.log(result);
