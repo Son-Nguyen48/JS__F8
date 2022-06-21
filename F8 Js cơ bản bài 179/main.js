@@ -1357,32 +1357,64 @@ var comments = [
 // console.log(person2.age); // Output: 21
 // console.log(person1 === person2); // Output: false
 
-function highlight([first, ...strings], ...values) {
-  return values
-    .reduce(
-      (acc, curr) => [...acc, `<span>${curr}</span>`, strings.shift()],
-      [first]
-    )
-    .join("");
-}
-var brand = "F8";
-var course = "JavaScript";
-var html = highlight`Hoc lap trinh ${course} tai ${brand}!`;
-console.log(html);
+// function highlight([first, ...strings], ...values) {
+//   return values
+//     .reduce(
+//       (acc, curr) => [...acc, `<span>${curr}</span>`, strings.shift()],
+//       [first]
+//     )
+//     .join("");
+// }
+// var brand = "F8";
+// var course = "JavaScript";
+// var html = highlight`Hoc lap trinh ${course} tai ${brand}!`;
+// console.log(html);
 
-import logger from "./logger.js";
-import * as contants from "./logger.js";
+// import logger from "./logger.js";
+// import * as contants from "./logger.js";
 
-console.log(contants);
+// console.log(contants);
 
-console.log(typeof logger, logger("Day la mot loi", contants.TYPE_ERROR)); //function 'Son2k'
+// console.log(typeof logger, logger("Day la mot loi", contants.TYPE_ERROR)); //function 'Son2k'
 
-const object = {
-  name: "Alice",
-  cat: {
-    name: "Dinah"
-  }
-};
+// const object = {
+//   name: "Alice",
+//   cat: {
+//     name: "Dinah"
+//   }
+// };
 
-console.log(object.cat?.name); //'Dinah'
-console.log(object.dog?.name); //undefined
+// console.log(object.cat?.name); //'Dinah'
+// console.log(object.dog?.name); //undefined
+
+// function createStorage(key) {
+//   const store = JSON.parse(localStorage.getItem(key)) ?? {};
+
+//   const save = () => {
+//     localStorage.setItem(key, JSON.stringify(store));
+//   };
+
+//   const storage = {
+//     get(key) {
+//       return store[key];
+//     },
+//     set(key, value) {
+//       store[key] = value;
+//       save();
+//     },
+//     remove(key) {
+//       delete store[key];
+//       save();
+//     }
+//   };
+
+//   return storage;
+// }
+
+// const profileSettings = createStorage("profileSettings");
+
+// // profileSettings.set("fullName", "NTS");
+// // profileSettings.set("email", "NTS@gmail.com");
+
+// console.log(profileSettings.get("fullName"));
+// console.log(profileSettings.get("email"));
