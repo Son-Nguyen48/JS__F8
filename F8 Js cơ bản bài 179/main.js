@@ -1418,3 +1418,91 @@ var comments = [
 
 // console.log(profileSettings.get("fullName"));
 // console.log(profileSettings.get("email"));
+
+// console.log(age);
+
+// var age = 12;
+
+// const counter1 = makeCounter();
+
+// console.log(counter1());
+// console.log(counter1());
+// console.log(counter1());
+
+// function makeCounter() {
+//   let counter = 0;
+
+//   return increase;
+
+//   function increase() {
+//     return ++counter;
+//   }
+// }
+
+// const student = Object.freeze({
+//   fullName: "Nguyen Van A" // Thuộc tính nằm trong object này không sửa được.
+// });
+
+// student.fullName = "Nguyen Van B"; //Không thực hiện được
+
+// console.log(student); //{fullName: 'Nguyen Van A'}
+
+// const student = {
+//   name: "Oanh Ha",
+//   profile: {
+//     firstName: "Oanh",
+//     lastName: "Ha",
+//     instroduction: "Girl"
+//   }
+// };
+
+// function doSomething(obj) {
+//   obj = JSON.parse(JSON.stringify(obj)); //Tạo object mới trong vùng nhớ mới.
+//   obj.name = "NTS"; //Sửa object mới trong một vùng nhớ mới nên không ảnh hưởng đến object cũ.
+//   return obj;
+// }
+
+// const a = {
+//   name: "DNS"
+// };
+
+// console.log(doSomething(a)); //{name: 'NTS'}
+// console.log(a); //{name: 'DNS'}
+
+// const iPhone7 = {
+//   //Thuộc tính - Properties
+//   name: "iPhone7",
+//   color: "pink",
+//   weight: 300,
+
+//   //Phương thức - Methods
+//   takePhoto() {
+//     console.log("take a photo");
+//   }
+// };
+
+// console.log(iPhone7.takePhoto());
+
+// let createBtn = document.querySelector("#create");
+
+// createBtn.onclick = function () {
+//   console.log(this);
+// };
+
+// function Car(name, color, weight) {
+//   this.name = name;
+//   this.color = color;
+//   this.weight = weight;
+//   this.run = function () {
+//     console.log("Running", this);
+//   };
+// }
+
+// const car = new Car("Mercedes", "red", 300);
+// console.log(car.run());
+
+function myFunc() {
+  console.log(this);
+}
+
+myFunc();

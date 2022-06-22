@@ -11,6 +11,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="main.css" />
     <title>JS F8</title>
+    <style>
+      /* Tự CSS đi nha */
+      .tab-content {
+        display: none;
+      }
+      #tab-label-1:checked ~ #tab-content-1 {
+        display: block;
+      }
+      #tab-label-2:checked ~ #tab-content-2 {
+        display: block;
+      }
+      #tab-label-3:checked ~ #tab-content-3 {
+        display: block;
+      }
+    </style>
   </head>
   <body>
     <!-- <h1 id="title" class="product-list product"><p>Javascript F8</p></h1>
@@ -102,6 +117,16 @@
         <button id="create">Create</button>
       </div>
     </div>
+    <input type="radio" name="tab" id="tab-label-1" />
+    <input type="radio" name="tab" id="tab-label-2" />
+    <input type="radio" name="tab" id="tab-label-3" />
+    <label class="tab-label" for="tab-label-1">Tên tab 1</label>
+    <label class="tab-label" for="tab-label-2">Tên tab 2</label>
+    <label class="tab-label" for="tab-label-3">Tên tab 3</label>
+    <div class="tab-content" id="tab-content-1">Nội dung tab 1</div>
+    <div class="tab-content" id="tab-content-2">Nội dung tab 2</div>
+    <div class="tab-content" id="tab-content-3">Nội dung tab 3</div>
+
     <script type="module" src="main.js"></script>
   </body>
 </html>
